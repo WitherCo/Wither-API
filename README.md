@@ -58,8 +58,8 @@ gunicorn --bind 0.0.0.0:5000 --reuse-port --reload main:app
 
 ## License
 
-MIT
+Copyright 2025 WitherCo all rights reserved.
 
 ## Contact
 
-For questions or support, please contact [your@email.com](mailto:your@email.com).
+For questions or support, please contact [lifelessrose@witherco.xyz](mailto:your@email.com).
