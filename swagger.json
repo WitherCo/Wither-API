@@ -1,40 +1,25 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "witherco.xyz API Gateway",
-    "description": "A versatile API gateway that connects with external projects, domains, email services, and bots",
+    "title": "Wither API Gateway",
+    "description": "A versatile API gateway for witherco.xyz",
     "version": "1.0.0"
   },
   "servers": [
     {
-      "url": "https://api.witherco.xyz/api",
-      "description": "witherco.xyz API Gateway"
-    }
-  ],
-  "components": {
-    "securitySchemes": {
-      "ApiKeyAuth": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "Authorization",
-        "description": "API key in the format: 'Bearer YOUR_API_KEY'"
-      }
-    }
-  },
-  "security": [
-    {
-      "ApiKeyAuth": []
+      "url": "https://api.witherco.xyz",
+      "description": "Production server"
     }
   ],
   "paths": {
-    "/health": {
+    "/api/health": {
       "get": {
         "summary": "Health check endpoint",
-        "description": "Check if the API is running",
-        "security": [],
+        "description": "Check if the API is running properly",
+        "operationId": "getHealthCheck",
         "responses": {
           "200": {
-            "description": "API is running",
+            "description": "API is healthy",
             "content": {
               "application/json": {
                 "schema": {
@@ -42,15 +27,11 @@
                   "properties": {
                     "status": {
                       "type": "string",
-                      "example": "success"
+                      "example": "ok"
                     },
-                    "message": {
+                    "version": {
                       "type": "string",
-                      "example": "API is running"
-                    },
-                    "timestamp": {
-                      "type": "string",
-                      "example": "2023-01-01T00:00:00Z"
+                      "example": "1.0.0"
                     }
                   }
                 }
@@ -60,54 +41,25 @@
         }
       }
     },
-    "/keys": {
+    "/api/keys": {
       "get": {
-        "summary": "Get all API keys",
+        "summary": "List API keys",
         "description": "Get all API keys for the authenticated user",
+        "operationId": "getApiKeys",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "List of API keys",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "string",
-                      "example": "success"
-                    },
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "integer",
-                            "example": 1
-                          },
-                          "name": {
-                            "type": "string",
-                            "example": "My API Key"
-                          },
-                          "key": {
-                            "type": "string",
-                            "example": "abc123def456"
-                          },
-                          "created_at": {
-                            "type": "string",
-                            "example": "2023-01-01T00:00:00Z"
-                          },
-                          "last_used_at": {
-                            "type": "string",
-                            "example": "2023-01-01T00:00:00Z"
-                          },
-                          "is_active": {
-                            "type": "boolean",
-                            "example": true
-                          }
-                        }
-                      }
-                    }
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApiKey"
                   }
                 }
               }
@@ -119,21 +71,27 @@
         }
       },
       "post": {
-        "summary": "Create a new API key",
+        "summary": "Create API key",
         "description": "Create a new API key for the authenticated user",
+        "operationId": "createApiKey",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["name"],
                 "properties": {
                   "name": {
                     "type": "string",
                     "example": "My API Key"
                   }
-                }
+                },
+                "required": ["name"]
               }
             }
           }
@@ -144,230 +102,59 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "string",
-                      "example": "success"
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "API key created successfully"
-                    },
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "integer",
-                          "example": 1
-                        },
-                        "name": {
-                          "type": "string",
-                          "example": "My API Key"
-                        },
-                        "key": {
-                          "type": "string",
-                          "example": "abc123def456"
-                        },
-                        "created_at": {
-                          "type": "string",
-                          "example": "2023-01-01T00:00:00Z"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiKey"
                 }
               }
             }
           },
-          "400": {
-            "description": "Bad request"
-          },
           "401": {
             "description": "Unauthorized"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApiKey": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "key": {
+            "type": "string",
+            "example": "wth_c8a9d7e6b5a4c3b2a1"
+          },
+          "name": {
+            "type": "string",
+            "example": "My API Key"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "last_used_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "is_active": {
+            "type": "boolean",
+            "example": true
           }
         }
       }
     },
-    "/webhooks": {
-      "get": {
-        "summary": "Get all webhook endpoints",
-        "description": "Get all webhook endpoints for the authenticated user",
-        "responses": {
-          "200": {
-            "description": "List of webhook endpoints"
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      },
-      "post": {
-        "summary": "Create a new webhook endpoint",
-        "description": "Create a new webhook endpoint for the authenticated user",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": ["name", "url", "events"],
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "example": "My Webhook"
-                  },
-                  "url": {
-                    "type": "string",
-                    "example": "https://example.com/webhook"
-                  },
-                  "events": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "example": ["user.created", "user.updated"]
-                  },
-                  "secret": {
-                    "type": "string",
-                    "example": "mysecret"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Webhook endpoint created"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/email/send": {
-      "post": {
-        "summary": "Send an email",
-        "description": "Send an email using the configured SMTP server",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": ["to", "subject", "body"],
-                "properties": {
-                  "to": {
-                    "type": "string",
-                    "example": "recipient@example.com"
-                  },
-                  "subject": {
-                    "type": "string",
-                    "example": "Hello World"
-                  },
-                  "body": {
-                    "type": "string",
-                    "example": "This is a test email."
-                  },
-                  "html": {
-                    "type": "string",
-                    "example": "<p>This is a <strong>test</strong> email.</p>"
-                  },
-                  "cc": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "example": ["cc1@example.com", "cc2@example.com"]
-                  },
-                  "bcc": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "example": ["bcc1@example.com", "bcc2@example.com"]
-                  },
-                  "reply_to": {
-                    "type": "string",
-                    "example": "reply@example.com"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Email sent successfully"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Failed to send email"
-          }
-        }
-      }
-    },
-    "/bot/send-message": {
-      "post": {
-        "summary": "Send a message using the configured bot",
-        "description": "Send a message to a channel using the configured bot",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": ["channel", "message"],
-                "properties": {
-                  "channel": {
-                    "type": "string",
-                    "example": "general"
-                  },
-                  "message": {
-                    "type": "string",
-                    "example": "Hello from the API Gateway!"
-                  },
-                  "attachments": {
-                    "type": "array",
-                    "items": {
-                      "type": "object"
-                    },
-                    "example": [
-                      {
-                        "title": "Attachment Title",
-                        "text": "Attachment Text"
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Message sent successfully"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Failed to send message"
-          }
-        }
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key"
       }
     }
   }
