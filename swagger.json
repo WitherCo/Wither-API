@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://api.wither.xyz",
+      "url": "https://api.witherco.xyz",
       "description": "Production server"
     }
   ],
@@ -91,7 +91,9 @@
                     "example": "My API Key"
                   }
                 },
-                "required": ["name"]
+                "required": [
+                  "name"
+                ]
               }
             }
           }
