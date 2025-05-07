@@ -3,20 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swagger Documentation - Wither API Gateway</title>
+    <title>API Documentation - Wither API Gateway</title>
+    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@3/swagger-ui.css">
     <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@4/swagger-ui.css">
     <style>
-        body {
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-        }
-        .swagger-ui .opblock .opblock-summary-method {
-            border-radius: 4px;
-        }
-        .swagger-ui {
-            margin-top: 2rem;
-        }
+        body { margin: 0; background: #212529; color: #f8f9fa; }
+        #swagger-ui { margin: 0 auto; max-width: 1460px; padding: 20px; }
+        .topbar { display: none; }
     </style>
 </head>
 <body data-bs-theme="dark">
@@ -32,10 +25,7 @@
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="api-reference.html">API Reference</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Swagger</a>
+                        <a class="nav-link active" href="#">API Docs</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://github.com/WitherCo/Wither-API" target="_blank">GitHub</a>
@@ -45,38 +35,12 @@
         </div>
     </nav>
 
-    <div class="container my-4">
-        <h1>Swagger Documentation</h1>
-        <p class="lead">Interactive API documentation for the Wither API Gateway.</p>
-    </div>
-
-    <div class="container-fluid">
-        <div id="swagger-ui"></div>
-    </div>
-
-    <footer class="bg-dark text-light py-4 mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>Wither API Gateway</h5>
-                    <p>A versatile API gateway for witherco.xyz</p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <a href="https://github.com/WitherCo/Wither-API" class="text-decoration-none text-light me-3">GitHub</a>
-                    <a href="https://witherco.xyz" class="text-decoration-none text-light">witherco.xyz</a>
-                </div>
-            </div>
-            <hr>
-            <div class="text-center">
-                <small>&copy; 2025 WitherCo. All rights reserved.</small>
-            </div>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/swagger-ui-dist@4/swagger-ui-bundle.js"></script>
+    <div id="swagger-ui"></div>
+    
+    <script src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"></script>
     <script>
         window.onload = function() {
-            SwaggerUIBundle({
+            const ui = SwaggerUIBundle({
                 url: "swagger.json",
                 dom_id: '#swagger-ui',
                 deepLinking: true,
@@ -85,11 +49,16 @@
                     SwaggerUIBundle.SwaggerUIStandalonePreset
                 ],
                 layout: "BaseLayout",
-                plugins: [
-                    SwaggerUIBundle.plugins.DownloadUrl
-                ],
+                supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
+                docExpansion: 'list',
+                defaultModelsExpandDepth: 1,
+                defaultModelExpandDepth: 1,
+                syntaxHighlight: {
+                    theme: 'monokai'
+                }
             });
-        }
+            window.ui = ui;
+        };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
