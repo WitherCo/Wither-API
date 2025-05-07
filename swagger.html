@@ -4,233 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Documentation - Wither API Gateway</title>
-    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui.css">
-    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@3/swagger-ui.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { 
-            margin: 0; 
-            background: #1a1d21; 
-            color: #e9ecef;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-        #swagger-ui { 
-            margin: 0 auto; 
-            max-width: 1460px; 
-            padding: 30px; 
-        }
-        /* Hide SwaggerUI top bar components */
-        .swagger-ui .topbar { 
-            display: none !important; 
-        }
-        /* Hide some other elements that might interfere with our styling */
-        .swagger-ui .information-container .info .title small {
-            display: none;
-        }
-        .swagger-ui .information-container {
-            background-color: transparent !important;
-        }
-        .navbar { 
-            background-color: #252a2e !important;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 15px 0;
-        }
-        .navbar-brand {
-            font-weight: 600;
-            font-size: 1.3rem;
-            color: #e9ecef !important;
-        }
-        .navbar-dark .navbar-nav .nav-link { 
-            color: rgba(255, 255, 255, 0.75);
-            font-weight: 500;
-            padding: 10px 15px;
-            transition: color 0.2s;
-        }
-        .navbar-dark .navbar-nav .nav-link:hover {
-            color: rgba(255, 255, 255, 0.95);
-        }
-        .navbar-dark .navbar-nav .nav-link.active { 
-            color: #fff;
-            font-weight: 600;
-        }
-        /* Custom SwaggerUI styling for dark mode */
-        .swagger-ui {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-        }
-        /* Main containers */
-        .swagger-ui .scheme-container {
-            background-color: #252a2e !important;
-            box-shadow: none !important;
-            border-radius: 8px;
-            padding: 25px !important;
-        }
-        .swagger-ui .info {
-            margin: 25px 0 !important;
-        }
-        .swagger-ui .info .title {
-            color: #e9ecef !important;
-        }
-        .swagger-ui .info .base-url {
-            color: #adb5bd !important;
-        }
-        .swagger-ui .info .description {
-            color: #adb5bd !important;
-        }
-        
-        /* Buttons */
-        .swagger-ui .btn {
-            border-radius: 6px;
-        }
-        
-        /* Operation blocks */
-        .swagger-ui .opblock-tag {
-            border-bottom: 1px solid #343a40 !important;
-            color: #e9ecef !important;
-            font-size: 1.3rem;
-        }
-        .swagger-ui .opblock {
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            border: 1px solid #343a40;
-            background: #252a2e !important;
-        }
-        .swagger-ui .opblock .opblock-summary {
-            border-color: #343a40 !important;
-        }
-        .swagger-ui .opblock .opblock-summary-method {
-            font-weight: bold;
-        }
-        .swagger-ui .opblock .opblock-summary-description {
-            color: #adb5bd !important;
-        }
-        .swagger-ui .opblock-summary-path__deprecated {
-            text-decoration: line-through;
-        }
-        .swagger-ui .opblock-summary-path {
-            color: #ffffff !important;
-            font-weight: 600 !important;
-        }
-        
-        /* Typography */
-        .swagger-ui, .swagger-ui h1, .swagger-ui h2, .swagger-ui h3, .swagger-ui h4, .swagger-ui h5, .swagger-ui h6 {
-            color: #ffffff !important;
-        }
-        .swagger-ui .parameter__name, .swagger-ui .parameter__type, .swagger-ui .parameter__deprecated, 
-        .swagger-ui .parameter__in, .swagger-ui table thead tr th, .swagger-ui .response-col_status, 
-        .swagger-ui .response-col_description, .swagger-ui section.models h4, 
-        .swagger-ui section.models h5, .swagger-ui .model-title, .swagger-ui .model {
-            color: #ffffff !important;
-        }
-        .swagger-ui .markdown p, .swagger-ui .markdown pre, 
-        .swagger-ui .renderedMarkdown p, .swagger-ui .renderedMarkdown pre,
-        .swagger-ui .parameter__extension, .swagger-ui .parameter__description,
-        .swagger-ui .opblock-summary-description {
-            color: #e9ecef !important;
-        }
-        /* Endpoint paths */
-        .swagger-ui .opblock-summary-path {
-            font-size: 16px !important;
-            font-weight: 600 !important;
-        }
-        /* Operation colors */
-        .swagger-ui .opblock-get .opblock-summary-method {
-            background-color: #0d6efd !important;
-        }
-        .swagger-ui .opblock-post .opblock-summary-method {
-            background-color: #198754 !important;
-        }
-        .swagger-ui .opblock-put .opblock-summary-method {
-            background-color: #fd7e14 !important;
-        }
-        .swagger-ui .opblock-delete .opblock-summary-method {
-            background-color: #dc3545 !important;
-        }
-        
-        /* Model section */
-        .swagger-ui section.models {
-            border: 1px solid #343a40 !important;
-            background: #252a2e !important;
-            border-radius: 8px;
-        }
-        .swagger-ui section.models.is-open h4 {
-            border-bottom-color: #343a40 !important;
-            color: #e9ecef !important;
-        }
-        
-        /* Tables */
-        .swagger-ui table {
-            background-color: transparent !important;
-        }
-        .swagger-ui .response-col_status {
-            border-color: #343a40 !important;
-        }
-        .swagger-ui tr {
-            border-color: #343a40 !important;
-        }
-        .swagger-ui .response table tbody tr td {
-            border-color: #343a40 !important;
-            color: #adb5bd !important;
-        }
-        
-        /* Code and schema formatting */
-        .swagger-ui .highlight-code {
-            background-color: #1a1d21 !important;
-        }
-        .swagger-ui .model-box {
-            background-color: #1a1d21 !important;
-            border-color: #343a40 !important;
-        }
-        .swagger-ui .property {
-            color: #adb5bd !important;
-        }
-        .swagger-ui .property-type {
-            color: #6c757d !important;
-        }
-        
-        /* Authorize button */
-        .swagger-ui .authorization__btn {
-            color: #e9ecef !important;
-            border-color: #6c757d !important;
-            background-color: #343a40 !important;
-        }
-        
-        /* Try it out section */
-        .swagger-ui .try-out__btn {
-            color: #e9ecef !important;
-            border-color: #6c757d !important;
-        }
-        .swagger-ui .btn.execute {
-            background-color: #0d6efd !important;
-            color: #fff !important;
-            border-color: #0d6efd !important;
-        }
-        .swagger-ui .btn.btn-clear {
-            background-color: transparent !important;
-            color: #adb5bd !important;
-            border-color: #6c757d !important;
-        }
-        
-        /* Parameters section */
-        .swagger-ui .parameters-col_description input[type=text] {
-            background-color: #1a1d21 !important;
-            color: #e9ecef !important;
-            border-color: #343a40 !important;
-        }
-        .swagger-ui .parameters-col_description select {
-            background-color: #1a1d21 !important;
-            color: #e9ecef !important;
-            border-color: #343a40 !important;
-        }
-        
-        /* JSON editor */
-        .swagger-ui .microlight {
-            color: #e9ecef !important;
-            background-color: #1a1d21 !important;
-        }
+        body { margin: 0; background: #212529; color: #f8f9fa; }
+        #swagger-ui { margin: 0 auto; max-width: 1460px; padding: 20px; }
+        .topbar { display: none; }
+        .navbar { background-color: #343a40 !important; }
+        .navbar-dark .navbar-nav .nav-link { color: rgba(255, 255, 255, 0.75); }
+        .navbar-dark .navbar-nav .nav-link.active { color: #fff; }
     </style>
 </head>
-<body>
+<body data-bs-theme="dark">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">Wither API</a>
@@ -246,15 +31,6 @@
                         <a class="nav-link active" href="#">API Docs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="privacy-policy.html">Privacy Policy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="terms-of-service.html">Terms of Service</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="api-usage-policy.html">API Usage Policy</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="https://github.com/WitherCo/Wither-API" target="_blank">GitHub</a>
                     </li>
                 </ul>
@@ -264,190 +40,22 @@
 
     <div id="swagger-ui"></div>
     
-    <script src="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui-bundle.js" crossorigin></script>
-    <script src="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui-standalone-preset.js" crossorigin></script>
+    <script src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"></script>
     <script>
         window.onload = function() {
-            // Embed the Swagger JSON directly
-            const spec = {
-              "openapi": "3.0.0",
-              "info": {
-                "title": "Wither API Gateway",
-                "description": "A versatile API gateway for witherco.xyz",
-                "version": "1.0.0"
-              },
-              "servers": [
-                {
-                  "url": "https://witherco.xyz",
-                  "description": "Production server"
-                }
-              ],
-              "paths": {
-                "/api/health": {
-                  "get": {
-                    "summary": "Health check endpoint",
-                    "description": "Check if the API is running properly",
-                    "operationId": "getHealthCheck",
-                    "responses": {
-                      "200": {
-                        "description": "API is healthy",
-                        "content": {
-                          "application/json": {
-                            "schema": {
-                              "type": "object",
-                              "properties": {
-                                "status": {
-                                  "type": "string",
-                                  "example": "ok"
-                                },
-                                "version": {
-                                  "type": "string",
-                                  "example": "1.0.0"
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                "/api/keys": {
-                  "get": {
-                    "summary": "List API keys",
-                    "description": "Get all API keys for the authenticated user",
-                    "operationId": "getApiKeys",
-                    "security": [
-                      {
-                        "ApiKeyAuth": []
-                      }
-                    ],
-                    "responses": {
-                      "200": {
-                        "description": "List of API keys",
-                        "content": {
-                          "application/json": {
-                            "schema": {
-                              "type": "array",
-                              "items": {
-                                "$ref": "#/components/schemas/ApiKey"
-                              }
-                            }
-                          }
-                        }
-                      },
-                      "401": {
-                        "description": "Unauthorized"
-                      }
-                    }
-                  },
-                  "post": {
-                    "summary": "Create API key",
-                    "description": "Create a new API key for the authenticated user",
-                    "operationId": "createApiKey",
-                    "security": [
-                      {
-                        "ApiKeyAuth": []
-                      }
-                    ],
-                    "requestBody": {
-                      "required": true,
-                      "content": {
-                        "application/json": {
-                          "schema": {
-                            "type": "object",
-                            "properties": {
-                              "name": {
-                                "type": "string",
-                                "example": "My API Key"
-                              }
-                            },
-                            "required": ["name"]
-                          }
-                        }
-                      }
-                    },
-                    "responses": {
-                      "201": {
-                        "description": "API key created",
-                        "content": {
-                          "application/json": {
-                            "schema": {
-                              "$ref": "#/components/schemas/ApiKey"
-                            }
-                          }
-                        }
-                      },
-                      "401": {
-                        "description": "Unauthorized"
-                      },
-                      "400": {
-                        "description": "Bad request"
-                      }
-                    }
-                  }
-                }
-              },
-              "components": {
-                "schemas": {
-                  "ApiKey": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "integer",
-                        "example": 1
-                      },
-                      "key": {
-                        "type": "string",
-                        "example": "wth_c8a9d7e6b5a4c3b2a1"
-                      },
-                      "name": {
-                        "type": "string",
-                        "example": "My API Key"
-                      },
-                      "created_at": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
-                      "last_used_at": {
-                        "type": "string",
-                        "format": "date-time",
-                        "nullable": true
-                      },
-                      "is_active": {
-                        "type": "boolean",
-                        "example": true
-                      }
-                    }
-                  }
-                },
-                "securitySchemes": {
-                  "ApiKeyAuth": {
-                    "type": "apiKey",
-                    "in": "header",
-                    "name": "X-API-Key"
-                  }
-                }
-              }
-            };
-            
             const ui = SwaggerUIBundle({
-                spec: spec, // Use inline spec instead of URL
+                url: "swagger.json",
                 dom_id: '#swagger-ui',
                 deepLinking: true,
                 presets: [
                     SwaggerUIBundle.presets.apis,
-                    SwaggerUIStandalonePreset
-                ],
-                plugins: [
-                    SwaggerUIBundle.plugins.DownloadUrl
+                    SwaggerUIBundle.SwaggerUIStandalonePreset
                 ],
                 layout: "BaseLayout",
                 supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
                 docExpansion: 'list',
                 defaultModelsExpandDepth: 1,
                 defaultModelExpandDepth: 1,
-                validatorUrl: null,
                 syntaxHighlight: {
                     theme: 'monokai'
                 }
@@ -455,6 +63,6 @@
             window.ui = ui;
         };
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
