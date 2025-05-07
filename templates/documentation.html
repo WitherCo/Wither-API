@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation - witherco.xyz API Gateway</title>
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+    <style>
+        body {
+            padding-top: 56px;
+        }
+        .sidebar {
+            position: sticky;
+            top: 4rem;
+            height: calc(100vh - 4rem);
+            overflow-y: auto;
+        }
+        .section-title {
+            padding-top: 3rem;
+            margin-top: -3rem;
+        }
+        .endpoint {
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--bs-primary);
+            padding-left: 1rem;
+        }
+        .method {
+            font-weight: bold;
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            margin-right: 0.5rem;
+        }
+        .method-get {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .method-post {
+            background-color: #198754;
+            color: white;
+        }
+        .method-put {
+            background-color: #fd7e14;
+            color: white;
+        }
+        .method-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+        .code-block {
+            background-color: #2b3035;
+            border-radius: 0.25rem;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">witherco.xyz API Gateway</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/documentation">Documentation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/yourusername/api-gateway" target="_blank">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#introduction">Introduction</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#authentication">Authentication</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#rate-limiting">Rate Limiting</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#error-handling">Error Handling</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#api-endpoints">API Endpoints</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ps-4" href="#health">Health Check</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ps-4" href="#api-keys">API Keys</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ps-4" href="#webhooks">Webhooks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ps-4" href="#email">Email</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ps-4" href="#bots">Bots</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#examples">Examples</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+                <h1 class="border-bottom pb-3 mb-4">API Documentation</h1>
+
+                <section id="introduction" class="section-title">
+                    <h2>Introduction</h2>
+                    <p>
+                        Welcome to the witherco.xyz API Gateway documentation. This API gateway provides a versatile interface for connecting with external projects, domains, email services, and bots.
+                        It supports RESTful API endpoints, webhooks, email capabilities, and bot integrations.
+                    </p>
+                    <p>
+                        The API uses standard HTTP methods (GET, POST, PUT, DELETE) and returns responses in JSON format. All API endpoints are prefixed with <code>/api</code> and accessible via <code>https://api.witherco.xyz/api/...</code>.
+                    </p>
+                    <p>
+                        With this API Gateway, you can:
+                        <ul>
+                            <li>Create and manage API keys for authentication</li>
+                            <li>Set up webhooks to receive and dispatch events</li>
+                            <li>Send emails with template support</li>
+                            <li>Integrate with various chat bot platforms</li>
+                            <li>Monitor API usage through comprehensive logging</li>
+                        </ul>
+                    </p>
+                </section>
+
+                <section id="authentication" class="section-title">
+                    <h2>Authentication</h2>
+                    <p>
+                        Most API endpoints require authentication. The API Gateway uses API keys for authentication. To authenticate, include your API key in the request header as follows:
+                    </p>
+                    <div class="code-block">
+                        <pre><code>Authorization: Bearer YOUR_API_KEY</code></pre>
+                    </div>
+                    <p>
+                        Alternatively, you can include the API key as a query parameter:
+                    </p>
+                    <div class="code-block">
+                        <pre><code>GET /api/endpoint?api_key=YOUR_API_KEY</code></pre>
+                    </div>
+                    <p>
+                        If you don't have an API key, you need to contact the API administrator to create one for you.
+                    </p>
+                </section>
+
+                <section id="rate-limiting" class="section-title">
+                    <h2>Rate Limiting</h2>
+                    <p>
+                        To protect the API from abuse, rate limiting is implemented. The default rate limit is 100 requests per hour for authenticated users and 20 requests per minute for unauthenticated users.
+                    </p>
+                    <p>
+                        When you make a request, the following headers are included in the response:
+                    </p>
+                    <ul>
+                        <li><code>X-RateLimit-Limit</code>: The maximum number of requests allowed in the current time window</li>
+                        <li><code>X-RateLimit-Remaining</code>: The number of requests remaining in the current time window</li>
+                        <li><code>X-RateLimit-Reset</code>: The time (in seconds) when the rate limit will reset</li>
+                    </ul>
+                    <p>
+                        If you exceed the rate limit, you will receive a 429 Too Many Requests response with a Retry-After header indicating how many seconds to wait before making another request.
+                    </p>
+                </section>
+
+                <section id="error-handling" class="section-title">
+                    <h2>Error Handling</h2>
+                    <p>
+                        The API uses standard HTTP status codes to indicate success or failure. In case of an error, the response will include a JSON object with the following structure:
+                    </p>
+                    <div class="code-block">
+                        <pre><code>{
+  "status": "error",
+  "message": "A description of the error",
+  "error_code": "error_code"
+}</code></pre>
+                    </div>
+                    <p>
+                        Common error codes:
+                    </p>
+                    <ul>
+                        <li><code>400 Bad Request</code>: The request was malformed or missing required parameters</li>
+                        <li><code>401 Unauthorized</code>: Authentication failed or is required</li>
+                        <li><code>404 Not Found</code>: The requested resource was not found</li>
+                        <li><code>429 Too Many Requests</code>: Rate limit exceeded</li>
+                        <li><code>500 Internal Server Error</code>: An unexpected error occurred on the server</li>
+                    </ul>
+                </section>
+
+                <section id="api-endpoints" class="section-title">
+                    <h2>API Endpoints</h2>
+
+                    <section id="health">
+                        <h3>Health Check</h3>
+                        <div class="endpoint">
+                            <div><span class="method method-get">GET</span> <code>/api/health</code></div>
+                            <p>Check if the API is running. This endpoint doesn't require authentication.</p>
+                            <h4>Response</h4>
+                            <div class="code-block">
+                                <pre><code>{
+  "status": "success",
+  "message": "API is running",
+  "timestamp": "2023-01-01T00:00:00Z"
+}</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="api-keys">
+                        <h3>API Keys</h3>
+                        <div class="endpoint">
+                            <div><span class="method method-get">GET</span> <code>/api/keys</code></div>
+                            <p>Get all API keys for the authenticated user.</p>
+                            <h4>Response</h4>
+                            <div class="code-block">
+                                <pre><code>{
+  "status": "success",
+  "data": [
+    {
+      "id": 1,
+      "name": "My API Key",
+      "key": "abc123def456",
+      "created_at": "2023-01-01T00:00:00Z",
+      "last_used_at": "2023-01-01T00:00:00Z",
+      "is_active": true
+    }
+  ]
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="endpoint">
+                            <div><span class="method method-post">POST</span> <code>/api/keys</code></div>
+                            <p>Create a new API key for the authenticated user.</p>
+                            <h4>Request Body</h4>
+                            <div class="code-block">
+                                <pre><code>{
+  "name": "My API Key"
+}</code></pre>
+                            </div>
+                            <h4>Response</h4>
+                            <div class="code-block">
+                                <pre><code>{
+  "status": "success",
+  "message": "API key created successfully",
+  "data": {
+    "id": 1,
+    "name": "My API Key",
+    "key": "abc123def456",
+    "created_at": "2023-01-01T00:00:00Z"
+  }
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="endpoint">
+                            <div><span class="method method-get">GET</span> <code>/api/keys/:key_id</code></div>
+                            <p>Get details of a specific API key.</p>
+                            <h4>Response</h4>
+                            <div class="code-block">
+                                <pre><code>{
+  "status": "success",
+  "data": {
+    "id": 1,
+    "name": "My API Key",
+    "key": "abc123def456",
+    "created_at": "2023-01-01T00:00:00Z",
+    "last_used_at": "2023-01-01T00:00:00Z",
+    "is_active": true
+  }
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="endpoint">
+                            <div><span class="method method-put">PUT</span> <code>/api/keys/:key_id</code></div>
+                            <p>Update a specific API key.</p>
+                            <h4>Request Body</h4>
+                            <div class="code-block">
+                                <pre><code>{
+  "name": "Updated API Key Name",
+  "is_active": true
+}</code></pre>
+                            </div>
+                            <h4>Response</h4>
+                            <div class="code-block">
+                                <pre><code>{
+  "status": "success",
+  "message": "API key updated successfully",
+  "data": {
+    "id": 1,
+    "name": "Updated API Key Name",
+    "key": "abc123def456",
+    "is_active": true
+  }
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="endpoint">
+                            <div><span class="method method-delete">DELETE</span> <code>/api/keys/:key_id</code></div>
+                            <p>Delete a specific API key.</p>
+                            <h4>Response</h4>
+                            <div class="code-block">
+                                <pre><code>{
+  "status": "success",
+  "message": "API key deleted successfully"
+}</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="webhooks">
+                        <h3>Webhooks</h3>
+                        <div class="endpoint">
+                            <div><span class="method method-get">GET</span> <code>/api/webhooks</code></div>
+                            <p>Get all webhook endpoints for the authenticated user.</p>
+                            <h4>Response</h4>
+                            <div class="code-block">
+                                <pre><code>{
+  "status": "success",
+  "data": [
+    {
+      "id": 1,
+      "name": "My Webhook",
+      "url": "https://example.com/webhook",
+      "events": ["user.created", "user.updated"],
+      "created_at": "2023-01-01T00:00:00Z",
+      "is_active": true
+    }
+  ]
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="endpoint">
+                            <div><span class="method method-post">POST</span> <code>/api/webhooks</code></div>
+                            <p>Create a new webhook endpoint.</p>
+                            <h4>Request Body</h4>
+                            <div class="code-block">
+                                <pre><code>{
+  "name": "My Webhook",
+  "url": "https://example.com/webhook",
+  "events": ["user.created", "user.updated"],
+  "secret": "mysecret"
+}</code></pre>
+                            </div>
+                            <h4>Response</h4>
+                            <div class="code-block">
+                                <pre><code>{
+  "status": "success",
+  "message": "Webhook endpoint created successfully",
+  "data": {
+    "id": 1,
+    "name": "My Webhook",
+    "url": "https://example.com/webhook",
+    "events": ["user.created", "user.updated"],
+    "created_at": "2023-01-01T00:00:00Z"
+  }
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="endpoint">
+                            <div><span class="method method-post">POST</span> <code>/api/webhooks/receive/:event_type</code></div>
+                            <p>Receive a webhook and dispatch it to registered endpoints.</p>
+                            <h4>Request Body</h4>
+                            <div class="code-block">
+                                <pre><code>{
+  "key1": "value1",
+  "key2": "value2"
+}</code></pre>
+                            </div>
+                            <h4>Response</h4>
+                            <div class="code-block">
+                                <pre><code>{
+  "status": "success",
+  "message": "Webhook received and dispatched",
+  "event": "user.created",
+  "results": [
+    {
+      "webhook_id": 1,
+      "status": "success",
+      "status_code": 200
+    }
+  ]
+}</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="email">
+                        <h3>Email</h3>
+                        <p>
+                            The witherco.xyz API Gateway provides powerful email capabilities, allowing you to send emails and manage email templates. 
+                            All email endpoints require authentication.
+                        </p>
+                        
+                        <div class="endpoint">
+                            <div><span class="method method-post">POST</span> <code>/api/email/send</code></div>
+                            <p>Send an email to one or more recipients.</p>
+                            <h4>Request Body</h4>
+                            <div class="code-block">
+                                <pre><code>{
+  "to": "recipient@example.com",  // Can be a string or an array of strings
+  "subject": "Hello from witherco.xyz API Gateway",
+  "body": "This is a test email sent via the API Gateway.",
+  "html": "<p>This is a <strong>test</strong> email.</p>",
+  "cc": ["cc1@example.com", "cc2@example.com"],
+  "bcc": ["bcc1@example.com", "bcc2@example.com"],
+  "reply_to": "reply@example.com"
+}</code></pre>
+                            </div>
+                            <h4>Response</h4>
+                            <div class="code-block">
+                                <pre><code>{
+  "status": "success",
+  "message": "Email sent successfully"
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="endpoint">
+                            <div><span class="method method-get">GET</span> <code>/api/email/templates</code></div>
+                            <p>Get all email templates for the authenticated user.</p>
+                            <h4>Response</h4>
+                            <div class="code-block">
+                                <pre><code>{
+  "status": "success",
+  "data": [
+    {
+      "id": 1,
+      "name": "Welcome Email",
+      "subject": "Welcome to Our Service",
+      "created_at": "2023-01-01T00:00:00Z"
+    }
+  ]
+}</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="bots">
+                        <h3>Bots</h3>
+                        <div class="endpoint">
+                            <div><span class="method method-post">POST</span> <code>/api/bot/send-message</code></div>
+                            <p>Send a message using the configured bot.</p>
+                            <h4>Request Body</h4>
+                            <div class="code-block">
+                                <pre><code>{
+  "channel": "general",
+  "message": "Hello from the API Gateway!",
+  "attachments": [
+    {
+      "title": "Attachment Title",
+      "text": "Attachment Text"
+    }
+  ]
+}</code></pre>
+                            </div>
+                            <h4>Response</h4>
+                            <div class="code-block">
+                                <pre><code>{
+  "status": "success",
+  "message": "Message sent successfully",
+  "data": {
+    "channel": "general",
+    "ts": "1234567890.123456"
+  }
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="endpoint">
+                            <div><span class="method method-get">GET</span> <code>/api/bot/channels</code></div>
+                            <p>Get list of available channels for the configured bot.</p>
+                            <h4>Response</h4>
+                            <div class="code-block">
+                                <pre><code>{
+  "status": "success",
+  "data": [
+    {
+      "id": "C1234567890",
+      "name": "general",
+      "is_private": false
+    }
+  ]
+}</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+
+                <section id="examples" class="section-title">
+                    <h2>Examples</h2>
+                    <h3>Sending an Email</h3>
+                    <div class="code-block">
+                        <pre><code>import requests
+
+response = requests.post(
+    'https://api.witherco.xyz/api/email/send',
+    headers={
+        'Authorization': 'Bearer YOUR_API_KEY'
+    },
+    json={
+        'to': 'recipient@example.com',
+        'subject': 'Hello from API Gateway',
+        'body': 'This is a test email sent via API Gateway.'
+    }
+)
+
+print(response.json())</code></pre>
+                    </div>
+
+                    <h3>Creating a Webhook Endpoint</h3>
+                    <div class="code-block">
+                        <pre><code>import requests
+
+response = requests.post(
+    'https://api.witherco.xyz/api/webhooks',
+    headers={
+        'Authorization': 'Bearer YOUR_API_KEY'
+    },
+    json={
+        'name': 'My Webhook',
+        'url': 'https://example.com/webhook',
+        'events': ['user.created', 'user.updated'],
+        'secret': 'mysecret'
+    }
+)
+
+print(response.json())</code></pre>
+                    </div>
+
+                    <h3>Sending a Bot Message</h3>
+                    <div class="code-block">
+                        <pre><code>import requests
+
+response = requests.post(
+    'https://api.witherco.xyz/api/bot/send-message',
+    headers={
+        'Authorization': 'Bearer YOUR_API_KEY'
+    },
+    json={
+        'channel': 'general',
+        'message': 'Hello from the API Gateway!'
+    }
+)
+
+print(response.json())</code></pre>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            feather.replace();
+        });
+    </script>
+</body>
+</html>
