@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Reference - Wither API Gateway</title>
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        .endpoint {
+            border-left: 4px solid var(--bs-primary);
+            padding-left: 1rem;
+            margin-bottom: 2rem;
+        }
+        .method {
+            font-weight: bold;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+        .method-get {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .method-post {
+            background-color: #198754;
+            color: white;
+        }
+        .method-put {
+            background-color: #fd7e14;
+            color: white;
+        }
+        .method-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+        pre {
+            background-color: var(--bs-dark);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+        }
+        code {
+            color: #e83e8c;
+        }
+        .api-section {
+            margin-bottom: 4rem;
+        }
+    </style>
+</head>
+<body data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Wither API</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">API Reference</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="swagger.html">Swagger</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/WitherCo/Wither-API" target="_blank">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <h1 class="mb-4">API Reference</h1>
+        <p class="lead">This document provides detailed information about the Wither API Gateway endpoints, authentication, and usage examples.</p>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Base URL</h5>
+                <p class="card-text"><code>https://api.witherco.xyz</code></p>
+                <h5 class="card-title">Authentication</h5>
+                <p class="card-text">Most API endpoints require authentication with an API key. Include your API key in the request headers:</p>
+                <pre><code>X-API-Key: your_api_key_here</code></pre>
+            </div>
+        </div>
+
+        <div class="api-section" id="api-keys">
+            <h2 class="mb-4">API Keys</h2>
+            
+            <div class="endpoint">
+                <h4><span class="method method-get">GET</span>/api/keys</h4>
+                <p>Get all API keys for the authenticated user.</p>
+                <h5>Response Example:</h5>
+                <pre><code>{
+  "keys": [
+    {
+      "id": 1,
+      "key": "wither_api_xxxxxxxxxxxx",
+      "name": "Production Key",
+      "created_at": "2025-01-01T12:00:00Z",
+      "last_used_at": "2025-01-02T14:30:00Z",
+      "is_active": true
+    }
+  ]
+}</code></pre>
+            </div>
+            
+            <div class="endpoint">
+                <h4><span class="method method-post">POST</span>/api/keys</h4>
+                <p>Create a new API key for the authenticated user.</p>
+                <h5>Request Example:</h5>
+                <pre><code>{
+  "name": "Development Key"
+}</code></pre>
+                <h5>Response Example:</h5>
+                <pre><code>{
+  "key": {
+    "id": 2,
+    "key": "wither_api_xxxxxxxxxxxx",
+    "name": "Development Key",
+    "created_at": "2025-01-03T09:15:00Z",
+    "last_used_at": null,
+    "is_active": true
+  }
+}</code></pre>
+            </div>
+            
+            <div class="endpoint">
+                <h4><span class="method method-get">GET</span>/api/keys/{key_id}</h4>
+                <p>Get details of a specific API key.</p>
+                <h5>Response Example:</h5>
+                <pre><code>{
+  "key": {
+    "id": 1,
+    "key": "wither_api_xxxxxxxxxxxx",
+    "name": "Production Key",
+    "created_at": "2025-01-01T12:00:00Z",
+    "last_used_at": "2025-01-02T14:30:00Z",
+    "is_active": true
+  }
+}</code></pre>
+            </div>
+            
+            <div class="endpoint">
+                <h4><span class="method method-put">PUT</span>/api/keys/{key_id}</h4>
+                <p>Update a specific API key.</p>
+                <h5>Request Example:</h5>
+                <pre><code>{
+  "name": "Updated Key Name",
+  "is_active": false
+}</code></pre>
+                <h5>Response Example:</h5>
+                <pre><code>{
+  "key": {
+    "id": 1,
+    "key": "wither_api_xxxxxxxxxxxx",
+    "name": "Updated Key Name",
+    "created_at": "2025-01-01T12:00:00Z",
+    "last_used_at": "2025-01-02T14:30:00Z",
+    "is_active": false
+  }
+}</code></pre>
+            </div>
+            
+            <div class="endpoint">
+                <h4><span class="method method-delete">DELETE</span>/api/keys/{key_id}</h4>
+                <p>Delete a specific API key.</p>
+                <h5>Response Example:</h5>
+                <pre><code>{
+  "message": "API key deleted successfully"
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="api-section" id="webhooks">
+            <h2 class="mb-4">Webhooks</h2>
+            
+            <div class="endpoint">
+                <h4><span class="method method-get">GET</span>/api/webhooks</h4>
+                <p>Get all webhook endpoints for the authenticated user.</p>
+                <h5>Response Example:</h5>
+                <pre><code>{
+  "webhooks": [
+    {
+      "id": 1,
+      "name": "Order Notifications",
+      "url": "https://example.com/webhooks/orders",
+      "events": "order.created,order.updated",
+      "created_at": "2025-01-01T12:00:00Z",
+      "is_active": true
+    }
+  ]
+}</code></pre>
+            </div>
+            
+            <div class="endpoint">
+                <h4><span class="method method-post">POST</span>/api/webhooks</h4>
+                <p>Create a new webhook endpoint.</p>
+                <h5>Request Example:</h5>
+                <pre><code>{
+  "name": "Payment Notifications",
+  "url": "https://example.com/webhooks/payments",
+  "events": "payment.succeeded,payment.failed",
+  "secret": "webhook_signing_secret"
+}</code></pre>
+                <h5>Response Example:</h5>
+                <pre><code>{
+  "webhook": {
+    "id": 2,
+    "name": "Payment Notifications",
+    "url": "https://example.com/webhooks/payments",
+    "events": "payment.succeeded,payment.failed",
+    "created_at": "2025-01-03T09:15:00Z",
+    "is_active": true
+  }
+}</code></pre>
+            </div>
+            
+            <!-- More webhook endpoints documentation -->
+        </div>
+
+        <div class="api-section" id="email">
+            <h2 class="mb-4">Email Service</h2>
+            
+            <div class="endpoint">
+                <h4><span class="method method-post">POST</span>/api/email/send</h4>
+                <p>Send an email.</p>
+                <h5>Request Example:</h5>
+                <pre><code>{
+  "to": "recipient@example.com",
+  "subject": "Welcome to Wither API",
+  "body": "Thank you for signing up!",
+  "html": "<h1>Thank you for signing up!</h1><p>We're excited to have you onboard.</p>",
+  "cc": ["cc@example.com"],
+  "bcc": ["bcc@example.com"]
+}</code></pre>
+                <h5>Response Example:</h5>
+                <pre><code>{
+  "status": "success",
+  "message": "Email sent successfully"
+}</code></pre>
+            </div>
+            
+            <div class="endpoint">
+                <h4><span class="method method-get">GET</span>/api/email/templates</h4>
+                <p>Get all email templates for the authenticated user.</p>
+                <h5>Response Example:</h5>
+                <pre><code>{
+  "templates": [
+    {
+      "id": 1,
+      "name": "Welcome Email",
+      "subject": "Welcome to Wither API",
+      "created_at": "2025-01-01T12:00:00Z"
+    }
+  ]
+}</code></pre>
+            </div>
+            
+            <!-- More email service endpoints documentation -->
+        </div>
+
+        <div class="api-section" id="bot">
+            <h2 class="mb-4">Bot Integration</h2>
+            
+            <div class="endpoint">
+                <h4><span class="method method-post">POST</span>/api/bot/send</h4>
+                <p>Send a message using the configured bot.</p>
+                <h5>Request Example:</h5>
+                <pre><code>{
+  "channel": "general",
+  "message": "Hello from Wither API Gateway!",
+  "attachments": [
+    {
+      "title": "API Update",
+      "text": "New features are now available"
+    }
+  ]
+}</code></pre>
+                <h5>Response Example:</h5>
+                <pre><code>{
+  "status": "success",
+  "message_id": "12345"
+}</code></pre>
+            </div>
+            
+            <div class="endpoint">
+                <h4><span class="method method-get">GET</span>/api/bot/channels</h4>
+                <p>Get list of available channels for the configured bot.</p>
+                <h5>Response Example:</h5>
+                <pre><code>{
+  "channels": [
+    {
+      "id": "general",
+      "name": "General Channel"
+    },
+    {
+      "id": "alerts",
+      "name": "Alerts Channel"
+    }
+  ]
+}</code></pre>
+            </div>
+            
+            <!-- More bot integration endpoints documentation -->
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Wither API Gateway</h5>
+                    <p>A versatile API gateway for witherco.xyz</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="https://github.com/WitherCo/Wither-API" class="text-decoration-none text-light me-3">GitHub</a>
+                    <a href="https://witherco.xyz" class="text-decoration-none text-light">witherco.xyz</a>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <small>&copy; 2025 WitherCo. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
