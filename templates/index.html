@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>witherco.xyz API Gateway</title>
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+    <style>
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--bs-primary);
+            margin-bottom: 1rem;
+        }
+        .hero-section {
+            padding: 5rem 0;
+            background: linear-gradient(45deg, #2b3035, #212529);
+        }
+        .footer {
+            padding: 2rem 0;
+            background-color: #212529;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">witherco.xyz API Gateway</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/documentation">Documentation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/WitherCo/Wither-API" target="_blank">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section text-center text-white">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">Connect Everything Together</h1>
+            <p class="lead mb-5">A versatile API gateway that connects with external projects, domains, email services, and bots.</p>
+            <a href="/documentation" class="btn btn-primary btn-lg me-2">Get Started</a>
+            <a href="https://github.com/WitherCo/Wither-API" class="btn btn-outline-light btn-lg" target="_blank">View on GitHub</a>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Features</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">
+                                <i data-feather="server"></i>
+                            </div>
+                            <h5 class="card-title">RESTful API</h5>
+                            <p class="card-text">Create and manage RESTful API endpoints for various integration types.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">
+                                <i data-feather="link"></i>
+                            </div>
+                            <h5 class="card-title">Webhooks</h5>
+                            <p class="card-text">Support webhook receiving and dispatching for real-time integrations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">
+                                <i data-feather="mail"></i>
+                            </div>
+                            <h5 class="card-title">Email Service</h5>
+                            <p class="card-text">Enable email sending/receiving capabilities with template support.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">
+                                <i data-feather="message-circle"></i>
+                            </div>
+                            <h5 class="card-title">Bot Integration</h5>
+                            <p class="card-text">Implement bot integration interfaces for chat platforms.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-dark">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2 class="mb-4">Secure and Reliable</h2>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i data-feather="check" class="text-success me-2"></i> API key authentication system</li>
+                        <li class="mb-3"><i data-feather="check" class="text-success me-2"></i> Rate limiting for API protection</li>
+                        <li class="mb-3"><i data-feather="check" class="text-success me-2"></i> Comprehensive error handling</li>
+                        <li class="mb-3"><i data-feather="check" class="text-success me-2"></i> Request/response logging</li>
+                        <li class="mb-3"><i data-feather="check" class="text-success me-2"></i> Cross-origin resource sharing (CORS) support</li>
+                    </ul>
+                    <a href="/documentation" class="btn btn-primary mt-3">Read the Documentation</a>
+                </div>
+                <div class="col-md-6 mt-4 mt-md-0">
+                    <div class="card bg-secondary">
+                        <div class="card-body">
+                            <pre class="mb-0 text-white"><code>
+# Example API request
+import requests
+
+response = requests.post(
+    'https://api.witherco.xyz/api/email/send',
+    headers={
+        'Authorization': 'Bearer YOUR_API_KEY'
+    },
+    json={
+        'to': 'recipient@example.com',
+        'subject': 'Hello from API Gateway',
+        'body': 'This is a test email sent via API Gateway.'
+    }
+)
+
+print(response.json())
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer text-center">
+        <div class="container">
+            <p class="mb-0">© 2025 witherco.xyz API Gateway. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            feather.replace();
+        });
+    </script>
+</body>
+</html>
