@@ -44,19 +44,36 @@
             color: #fff;
             font-weight: 600;
         }
-        /* Custom SwaggerUI styling */
+        /* Custom SwaggerUI styling for dark mode */
         .swagger-ui {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
         }
+        /* Main containers */
         .swagger-ui .scheme-container {
             background-color: #252a2e !important;
             box-shadow: none !important;
             border-radius: 8px;
             padding: 25px !important;
         }
+        .swagger-ui .info {
+            margin: 25px 0 !important;
+        }
+        .swagger-ui .info .title {
+            color: #e9ecef !important;
+        }
+        .swagger-ui .info .base-url {
+            color: #adb5bd !important;
+        }
+        .swagger-ui .info .description {
+            color: #adb5bd !important;
+        }
+        
+        /* Buttons */
         .swagger-ui .btn {
             border-radius: 6px;
         }
+        
+        /* Operation blocks */
         .swagger-ui .opblock-tag {
             border-bottom: 1px solid #343a40 !important;
             color: #e9ecef !important;
@@ -67,7 +84,114 @@
             overflow: hidden;
             margin-bottom: 20px;
             border: 1px solid #343a40;
-            background: #252a2e;
+            background: #252a2e !important;
+        }
+        .swagger-ui .opblock .opblock-summary {
+            border-color: #343a40 !important;
+        }
+        .swagger-ui .opblock .opblock-summary-method {
+            font-weight: bold;
+        }
+        .swagger-ui .opblock .opblock-summary-description {
+            color: #adb5bd !important;
+        }
+        
+        /* Typography */
+        .swagger-ui, .swagger-ui h1, .swagger-ui h2, .swagger-ui h3, .swagger-ui h4, .swagger-ui h5, .swagger-ui h6 {
+            color: #e9ecef !important;
+        }
+        .swagger-ui .parameter__name, .swagger-ui .parameter__type, .swagger-ui .parameter__deprecated, 
+        .swagger-ui .parameter__in, .swagger-ui table thead tr th, .swagger-ui .response-col_status, 
+        .swagger-ui .response-col_description, .swagger-ui section.models h4, 
+        .swagger-ui section.models h5, .swagger-ui .model-title, .swagger-ui .model {
+            color: #e9ecef !important;
+        }
+        .swagger-ui .markdown p, .swagger-ui .markdown pre, 
+        .swagger-ui .renderedMarkdown p, .swagger-ui .renderedMarkdown pre,
+        .swagger-ui .parameter__extension, .swagger-ui .parameter__description {
+            color: #adb5bd !important;
+        }
+        
+        /* Model section */
+        .swagger-ui section.models {
+            border: 1px solid #343a40 !important;
+            background: #252a2e !important;
+            border-radius: 8px;
+        }
+        .swagger-ui section.models.is-open h4 {
+            border-bottom-color: #343a40 !important;
+            color: #e9ecef !important;
+        }
+        
+        /* Tables */
+        .swagger-ui table {
+            background-color: transparent !important;
+        }
+        .swagger-ui .response-col_status {
+            border-color: #343a40 !important;
+        }
+        .swagger-ui tr {
+            border-color: #343a40 !important;
+        }
+        .swagger-ui .response table tbody tr td {
+            border-color: #343a40 !important;
+            color: #adb5bd !important;
+        }
+        
+        /* Code and schema formatting */
+        .swagger-ui .highlight-code {
+            background-color: #1a1d21 !important;
+        }
+        .swagger-ui .model-box {
+            background-color: #1a1d21 !important;
+            border-color: #343a40 !important;
+        }
+        .swagger-ui .property {
+            color: #adb5bd !important;
+        }
+        .swagger-ui .property-type {
+            color: #6c757d !important;
+        }
+        
+        /* Authorize button */
+        .swagger-ui .authorization__btn {
+            color: #e9ecef !important;
+            border-color: #6c757d !important;
+            background-color: #343a40 !important;
+        }
+        
+        /* Try it out section */
+        .swagger-ui .try-out__btn {
+            color: #e9ecef !important;
+            border-color: #6c757d !important;
+        }
+        .swagger-ui .btn.execute {
+            background-color: #0d6efd !important;
+            color: #fff !important;
+            border-color: #0d6efd !important;
+        }
+        .swagger-ui .btn.btn-clear {
+            background-color: transparent !important;
+            color: #adb5bd !important;
+            border-color: #6c757d !important;
+        }
+        
+        /* Parameters section */
+        .swagger-ui .parameters-col_description input[type=text] {
+            background-color: #1a1d21 !important;
+            color: #e9ecef !important;
+            border-color: #343a40 !important;
+        }
+        .swagger-ui .parameters-col_description select {
+            background-color: #1a1d21 !important;
+            color: #e9ecef !important;
+            border-color: #343a40 !important;
+        }
+        
+        /* JSON editor */
+        .swagger-ui .microlight {
+            color: #e9ecef !important;
+            background-color: #1a1d21 !important;
         }
     </style>
 </head>
