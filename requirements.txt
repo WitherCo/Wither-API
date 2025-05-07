@@ -1,0 +1,10 @@
+email-validator
+flask
+flask-cors
+flask-restful
+flask-sqlalchemy
+gunicorn
+psycopg2-binary
+python-dotenv
+requests
+werkzeug
