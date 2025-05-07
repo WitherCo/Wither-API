@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://api.witherco.xyz",
+      "url": "https://api.wither.xyz",
       "description": "Production server"
     }
   ],
