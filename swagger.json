@@ -91,9 +91,7 @@
                     "example": "My API Key"
                   }
                 },
-                "required": [
-                  "name"
-                ]
+                "required": ["name"]
               }
             }
           }
