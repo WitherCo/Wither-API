@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wither API Gateway Documentation</title>
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--bs-info);
+            margin-bottom: 1rem;
+        }
+        .hero-section {
+            padding: 4rem 0;
+            background: var(--bs-dark);
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        .docs-section {
+            margin-bottom: 3rem;
+        }
+        .api-card {
+            height: 100%;
+            transition: transform 0.2s;
+        }
+        .api-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Wither API</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#overview">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#api-docs">API Docs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#deployment">Deployment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/WitherCo/Wither-API" target="_blank">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold">Wither API Gateway</h1>
+            <p class="lead mb-4">A versatile integration hub for witherco.xyz</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+                <a href="api-reference.html" class="btn btn-primary btn-lg px-4 me-sm-3">API Reference</a>
+                <a href="https://github.com/WitherCo/Wither-API" class="btn btn-outline-secondary btn-lg px-4">View on GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="overview">
+        <div class="docs-section">
+            <h2 class="mb-4">Overview</h2>
+            <p class="lead">The Wither API Gateway is a central integration hub designed to connect various services and provide a unified interface for developers.</p>
+            <p>Built with Python and Flask, this API gateway provides secure authentication, rate limiting, webhook management, email service integration, and bot messaging capabilities all in one place.</p>
+        </div>
+
+        <div class="docs-section" id="features">
+            <h2 class="mb-4">Features</h2>
+            <div class="row g-4 py-3">
+                <div class="col-md-4">
+                    <div class="card api-card">
+                        <div class="card-body">
+                            <div class="feature-icon">🔑</div>
+                            <h3 class="card-title h5">API Key Management</h3>
+                            <p class="card-text">Secure API key generation and authentication for controlled access to resources.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card api-card">
+                        <div class="card-body">
+                            <div class="feature-icon">🔄</div>
+                            <h3 class="card-title h5">Webhook Integration</h3>
+                            <p class="card-text">Register and manage webhook endpoints for event-driven architecture.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card api-card">
+                        <div class="card-body">
+                            <div class="feature-icon">✉️</div>
+                            <h3 class="card-title h5">Email Service</h3>
+                            <p class="card-text">Send transactional emails with customizable templates.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card api-card">
+                        <div class="card-body">
+                            <div class="feature-icon">🤖</div>
+                            <h3 class="card-title h5">Bot Integration</h3>
+                            <p class="card-text">Connect and interact with messaging platforms and bots.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card api-card">
+                        <div class="card-body">
+                            <div class="feature-icon">⚡</div>
+                            <h3 class="card-title h5">Rate Limiting</h3>
+                            <p class="card-text">Protect your API from abuse with configurable rate limits.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card api-card">
+                        <div class="card-body">
+                            <div class="feature-icon">📊</div>
+                            <h3 class="card-title h5">Request Logging</h3>
+                            <p class="card-text">Comprehensive logging and monitoring of API usage.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="docs-section" id="api-docs">
+            <h2 class="mb-4">API Documentation</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="h5">API Reference</h3>
+                            <p>Detailed documentation of all available API endpoints, request/response formats, and authentication methods.</p>
+                            <a href="api-reference.html" class="btn btn-outline-primary">View API Reference</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="h5">Swagger Documentation</h3>
+                            <p>Interactive API documentation using Swagger UI, allowing you to explore and test API endpoints directly.</p>
+                            <a href="swagger.html" class="btn btn-outline-primary">View Swagger Docs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="docs-section" id="deployment">
+            <h2 class="mb-4">Deployment</h2>
+            <p>The Wither API Gateway can be deployed to various platforms. Follow our deployment guides for detailed instructions:</p>
+            <div class="list-group mb-4">
+                <a href="deployment/heroku.html" class="list-group-item list-group-item-action d-flex gap-3 py-3">
+                    <div class="d-flex gap-2 w-100 justify-content-between">
+                        <div>
+                            <h6 class="mb-0">Heroku Deployment</h6>
+                            <p class="mb-0 opacity-75">Deploy to Heroku with PostgreSQL database.</p>
+                        </div>
+                        <small class="opacity-50 text-nowrap">→</small>
+                    </div>
+                </a>
+                <a href="deployment/aws.html" class="list-group-item list-group-item-action d-flex gap-3 py-3">
+                    <div class="d-flex gap-2 w-100 justify-content-between">
+                        <div>
+                            <h6 class="mb-0">AWS Deployment</h6>
+                            <p class="mb-0 opacity-75">Deploy to AWS Elastic Beanstalk.</p>
+                        </div>
+                        <small class="opacity-50 text-nowrap">→</small>
+                    </div>
+                </a>
+                <a href="deployment/docker.html" class="list-group-item list-group-item-action d-flex gap-3 py-3">
+                    <div class="d-flex gap-2 w-100 justify-content-between">
+                        <div>
+                            <h6 class="mb-0">Docker Deployment</h6>
+                            <p class="mb-0 opacity-75">Deploy using Docker containers.</p>
+                        </div>
+                        <small class="opacity-50 text-nowrap">→</small>
+                    </div>
+                </a>
+                <a href="deployment/custom-domain.html" class="list-group-item list-group-item-action d-flex gap-3 py-3">
+                    <div class="d-flex gap-2 w-100 justify-content-between">
+                        <div>
+                            <h6 class="mb-0">Custom Domain Setup</h6>
+                            <p class="mb-0 opacity-75">Configure witherco.xyz domain with your deployment.</p>
+                        </div>
+                        <small class="opacity-50 text-nowrap">→</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Wither API Gateway</h5>
+                    <p>A versatile API gateway for witherco.xyz</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="https://github.com/WitherCo/Wither-API" class="text-decoration-none text-light me-3">GitHub</a>
+                    <a href="https://witherco.xyz" class="text-decoration-none text-light">witherco.xyz</a>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <small>&copy; 2025 WitherCo. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
