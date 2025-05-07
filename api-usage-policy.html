@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Usage Policy - Wither API Gateway</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1a1d21;
+            color: #e9ecef;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .container {
+            padding-top: 50px;
+            padding-bottom: 50px;
+            max-width: 900px;
+        }
+        h1 {
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+        h2 {
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #e9ecef;
+            font-size: 1.5rem;
+        }
+        p, ul, li {
+            color: #adb5bd;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        .policy-section {
+            background-color: #252a2e;
+            border: 1px solid #343a40;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .navbar { 
+            background-color: #252a2e !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #e9ecef !important;
+        }
+        .navbar-dark .navbar-nav .nav-link { 
+            color: rgba(255, 255, 255, 0.75);
+            font-weight: 500;
+            padding: 10px 15px;
+            transition: color 0.2s;
+        }
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: rgba(255, 255, 255, 0.95);
+        }
+        .navbar-dark .navbar-nav .nav-link.active { 
+            color: #fff;
+            font-weight: 600;
+        }
+        .date-updated {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #343a40;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        .highlighted {
+            background-color: rgba(13, 110, 253, 0.1);
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #0d6efd;
+            margin-bottom: 20px;
+        }
+        .code-sample {
+            background-color: #1a1d21;
+            border: 1px solid #343a40;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-family: monospace;
+            color: #adb5bd;
+            overflow-x: auto;
+        }
+        .table {
+            color: #adb5bd;
+            border-color: #343a40;
+            margin-bottom: 30px;
+        }
+        .table thead th {
+            background-color: #212529;
+            border-color: #343a40;
+            color: #e9ecef;
+        }
+        .table td {
+            border-color: #343a40;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Wither API</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="swagger.html">API Docs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="privacy-policy.html">Privacy Policy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="terms-of-service.html">Terms of Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="api-usage-policy.html">API Usage Policy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/WitherCo/Wither-API" target="_blank">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <h1>API Usage Policy</h1>
+        <p class="date-updated">Last Updated: May 7, 2025</p>
+        
+        <div class="policy-section">
+            <h2>1. Introduction</h2>
+            <p>
+                This API Usage Policy governs your use of the Wither API Gateway. By using our API, you agree to comply 
+                with this Policy, our <a href="terms-of-service.html" style="color: #0d6efd;">Terms of Service</a>, and 
+                <a href="privacy-policy.html" style="color: #0d6efd;">Privacy Policy</a>.
+            </p>
+            <p>
+                Our goal is to provide a reliable, secure, and efficient API that helps you integrate with various services. 
+                This Policy is designed to ensure fair usage and maintain the quality of service for all users.
+            </p>
+            
+            <h2>2. API Authentication</h2>
+            <p>
+                All API requests must be authenticated using API keys. Each API key is associated with a specific user account 
+                and has certain permissions and rate limits.
+            </p>
+            <p>
+                To authenticate your requests, include your API key in the HTTP header:
+            </p>
+            <div class="code-sample">
+                X-API-Key: your_api_key_here
+            </div>
+            <p>
+                API keys should be kept secure and never shared publicly. Do not include API keys in client-side code or 
+                repositories. We recommend storing your API keys in environment variables or a secure secret management system.
+            </p>
+            <div class="highlighted">
+                <p>
+                    <strong>Important Security Notice:</strong> If you believe your API key has been compromised, 
+                    immediately revoke it and generate a new one. You can manage your API keys through your account dashboard.
+                </p>
+            </div>
+            
+            <h2>3. Rate Limits</h2>
+            <p>
+                To ensure fair usage and service stability, we implement rate limiting on API requests. The default rate 
+                limit is 100 requests per hour per API key. Different endpoints may have different rate limits based on their 
+                resource intensity.
+            </p>
+            <p>
+                When you exceed your rate limit, the API will return a 429 Too Many Requests response with a Retry-After 
+                header indicating when you can resume making requests.
+            </p>
+            <p>
+                Rate limits are subject to change based on service load and other factors. If you need higher rate limits 
+                for your application, please contact us to discuss your requirements.
+            </p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Endpoint Category</th>
+                        <th>Rate Limit</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>General API</td>
+                        <td>100 requests/hour</td>
+                        <td>Default limit for most endpoints</td>
+                    </tr>
+                    <tr>
+                        <td>Webhook Delivery</td>
+                        <td>50 requests/minute</td>
+                        <td>Higher frequency allowed for event processing</td>
+                    </tr>
+                    <tr>
+                        <td>Email Sending</td>
+                        <td>20 requests/minute</td>
+                        <td>To prevent spam and abuse</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>4. Data Usage and Storage</h2>
+            <p>
+                Any data you provide through the API should comply with our Privacy Policy and applicable data protection laws. 
+                You are responsible for obtaining necessary consents for the collection, use, and processing of any personal data.
+            </p>
+            <p>
+                We may store certain data transmitted through the API for debugging, analytics, and improving our services. 
+                Request logs are typically retained for 30 days. Sensitive data such as authentication credentials or personal 
+                information should never be included in URLs or query parameters.
+            </p>
+            
+            <h2>5. API Versioning and Changes</h2>
+            <p>
+                We may update or modify the API from time to time. Major changes that could break existing integrations will be 
+                released as new API versions. We strive to maintain backward compatibility within the same API version.
+            </p>
+            <p>
+                We will provide advance notice of significant changes through our documentation, email notifications, and the 
+                API changelog. We recommend subscribing to our updates to stay informed about changes that may affect your integration.
+            </p>
+            
+            <h2>6. Webhooks</h2>
+            <p>
+                Our webhook system allows you to receive real-time notifications about specific events. When setting up webhook 
+                endpoints, ensure they:
+            </p>
+            <ul>
+                <li>Respond quickly (within 5 seconds) to webhook deliveries</li>
+                <li>Return appropriate HTTP status codes (2xx for success)</li>
+                <li>Implement proper security measures, such as verifying webhook signatures</li>
+                <li>Are publicly accessible and properly configured to handle incoming requests</li>
+            </ul>
+            <p>
+                We may disable webhook deliveries if your endpoint consistently fails to receive them properly. Webhook events 
+                are retried up to 3 times with exponential backoff in case of delivery failures.
+            </p>
+            
+            <h2>7. Error Handling</h2>
+            <p>
+                The API uses standard HTTP status codes to indicate the success or failure of requests. Here are some common 
+                status codes you may encounter:
+            </p>
+            <ul>
+                <li><strong>200 OK</strong>: Request succeeded</li>
+                <li><strong>201 Created</strong>: Resource was successfully created</li>
+                <li><strong>400 Bad Request</strong>: Request was invalid or could not be processed</li>
+                <li><strong>401 Unauthorized</strong>: Authentication failed or was not provided</li>
+                <li><strong>403 Forbidden</strong>: Authentication succeeded but the user lacks permission</li>
+                <li><strong>404 Not Found</strong>: Requested resource does not exist</li>
+                <li><strong>429 Too Many Requests</strong>: Rate limit exceeded</li>
+                <li><strong>500 Internal Server Error</strong>: An error occurred on the server</li>
+            </ul>
+            <p>
+                Error responses include a JSON body with more details about the error:
+            </p>
+            <div class="code-sample">
+{
+  "error": {
+    "code": "invalid_request",
+    "message": "The request was invalid",
+    "details": "The required field 'name' is missing"
+  }
+}
+            </div>
+            <p>
+                Implement proper error handling in your applications to gracefully handle API errors and rate limits.
+            </p>
+            
+            <h2>8. Acceptable Use</h2>
+            <p>
+                When using our API, you must comply with all applicable laws and regulations. The following activities are 
+                strictly prohibited:
+            </p>
+            <ul>
+                <li>Scraping, crawling, or downloading large amounts of data for purposes other than integration</li>
+                <li>Attempting to bypass or circumvent API rate limits or security measures</li>
+                <li>Using the API to send spam, unsolicited messages, or harmful content</li>
+                <li>Reverse engineering the API or attempting to access undocumented features</li>
+                <li>Using the API in a way that could degrade its performance or availability for others</li>
+                <li>Building applications that violate our Terms of Service or Privacy Policy</li>
+            </ul>
+            <p>
+                We reserve the right to suspend or terminate API access for users who violate this Policy or our Terms of Service.
+            </p>
+            
+            <h2>9. Support and Maintenance</h2>
+            <p>
+                We strive to maintain high availability for our API. However, occasional maintenance windows and service 
+                interruptions may occur. We will provide advance notice of scheduled maintenance whenever possible.
+            </p>
+            <p>
+                For API support, you can:
+            </p>
+            <ul>
+                <li>Submit issues or questions through our GitHub repository</li>
+                <li>Contact us at support@witherco.xyz for urgent matters</li>
+                <li>Refer to the API documentation for implementation guidance</li>
+            </ul>
+            <p>
+                We may occasionally deprecate API features or endpoints that are no longer supported. Deprecated features will 
+                be clearly marked in the documentation with information about alternatives and timelines for removal.
+            </p>
+            
+            <h2>10. Monitoring and Compliance</h2>
+            <p>
+                We monitor API usage to ensure compliance with this Policy. We may contact you if we detect unusual patterns 
+                or potential violations. In cases of severe or repeated violations, we may take action to protect our systems 
+                and other users, including temporarily or permanently suspending your API access.
+            </p>
+            <p>
+                We welcome feedback on this Policy and our API services. If you have suggestions for improvements or questions 
+                about compliance, please contact us.
+            </p>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 Wither API Gateway. All rights reserved.</p>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
